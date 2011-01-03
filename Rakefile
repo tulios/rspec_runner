@@ -8,11 +8,16 @@ begin
     gemspec.homepage = "http://github.com/tulios/rspec_runner"
     gemspec.authors = ["Túlio Ornelas"]
     gemspec.test_files = Dir.glob('spec/*_spec.rb')
-    gem.add_runtime_dependency("activesupport", ">= 3.0.0")
-    gemspec.add_development_dependency "rspec", ">= 2.0.1"
-    gemspec.add_development_dependency "rspec-core", ">= 2.0.1"
+    gemspec.add_runtime_dependency("activesupport", ">= 3.0.0")
+    # gemspec.add_development_dependency "rspec", ">= 2.0.1"
+    # gemspec.add_development_dependency "rspec-core", ">= 2.0.1"
   end
   Jeweler::GemcutterTasks.new
 rescue LoadError
   puts "Jeweler not available. Install it with: gem install jeweler"
+end
+
+# require 'rspec/core/rake_task'
+require 'spec/rake/spectask'
+Spec::Rake::SpecTask.new do |t|
 end

@@ -1,0 +1,15 @@
+default: todos
+   
+todos:
+  - resources/*_spec.rb
+  
+grupo1:
+  - resources/example1_spec.rb
+
+grupo2:
+  - resources/example1_spec.rb
+  - resources/example2_spec.rb
+
+apenas_um:
+  - resources/example1_spec.rb:
+    - should be false

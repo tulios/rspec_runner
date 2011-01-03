@@ -1,0 +1,16 @@
+#!/usr/bin/env ruby
+
+$LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
+require 'rspec_runner'
+
+app = RSpecRunner::App.new(ARGV)
+app.start!
+
+puts "Running: #{app.options.execute}\n"
+
+puts "Files: #{app.files.inspect}"
+puts "Examples: #{app.examples.inspect}"
+
+output = RSpecRunner.run_file_list(app.files, app.examples)
+RSpecRunner::Opener.open(output)
+sleep(5)
