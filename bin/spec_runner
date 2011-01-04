@@ -9,7 +9,8 @@ app.start!
 puts "Running: #{app.options.execute}\n"
 
 puts "Files: #{app.files.inspect}"
-puts "Examples: #{app.examples.inspect}"
+puts "Examples: #{app.examples.inspect}" unless app.examples.empty?
+puts ""
 
 output = RSpecRunner.run_file_list(app.files, app.examples)
 RSpecRunner::Opener.open(output)

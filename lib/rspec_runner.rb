@@ -5,7 +5,8 @@ begin
   require 'active_support'
 rescue LoadError
   require 'rubygems' unless ENV['NO_RUBYGEMS']
-  gem 'activesupport', ">= 3.0.0"
+  # gem 'activesupport', ">= 3.0.0"
+  gem 'activesupport', '2.3.8'
   require 'active_support'
 end
 

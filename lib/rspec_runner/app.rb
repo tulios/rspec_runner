@@ -9,14 +9,19 @@ module RSpecRunner
     
     def start!
       @options = OpenStruct.new
+      @options.project_path = File.expand_path('.')
+      
+      if default_descriptor?
+        @options.descriptor_path = File.expand_path(File.join(@options.project_path, 'spec', 'descriptor.yml'))
+        load_descriptor
+      end
+      
       opts = OptionParser.new do |opts|
-        
         # Path do arquivo que descreve os grupos de execucao
         #
-        opts.on("-f", "--file FILE", "File descriptor path") do |file_descriptor|
+        opts.on("-f", "--file FILE", "File descriptor path (Default: spec/descriptor.yml)") do |file_descriptor|
           @options.descriptor_path = file_descriptor
-          @options.descriptor ||= YAML.load(File.open(@options.descriptor_path).read)
-          @options.execute = descriptor["default"]
+          load_descriptor
         end
         
         # Qual grupo de execucao rodar
@@ -28,7 +33,10 @@ module RSpecRunner
       end
       
       opts.parse!(@args)
+      puts "Descriptor: #{@options.descriptor_path}"
+      
       extract_files_and_examples
+      load_project_context
     end
     
     def descriptor
@@ -44,6 +52,27 @@ module RSpecRunner
     end
     
     private
+    
+    def load_descriptor
+      @options.descriptor ||= YAML.load(File.open(@options.descriptor_path).read)
+      @options.execute = descriptor["default"]
+    end
+    
+    def default_descriptor?
+      File.exist?(File.join(@options.project_path, 'spec', 'descriptor.yml'))
+    end
+    
+    def rails?
+      File.exist?(File.join(@options.project_path, 'config', 'boot.rb'))
+    end
+    
+    def load_project_context
+      puts "Loading project context"
+      if rails?
+        ENV['RAILS_ENV'] = "test"
+        require File.expand_path(File.join(@options.project_path, "config", "environment"))
+      end
+    end
     
     def extract_files_and_examples
       group_options = @options.descriptor[@options.execute]
