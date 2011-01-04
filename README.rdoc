@@ -1,0 +1,7 @@
+= rspec_runner
+
+== Description
+  
+Adds suite of tests feature on RSpec (awesome if you have 1k+ tests)
+
+* Better documentation soon!
