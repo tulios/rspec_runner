@@ -2,8 +2,8 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gemspec|
     gemspec.name = "rspec_runner"
-    gemspec.summary = "GUI Runner for RSpec tests"
-    gemspec.description = "GUI Runner for RSpec tests"
+    gemspec.summary = "Add suite of tests feature on RSpec"
+    gemspec.description = "Add suite of tests feature on RSpec, show the results with html format (nice =])"
     gemspec.email = "ornelas.tulio@gmail.com"
     gemspec.homepage = "http://github.com/tulios/rspec_runner"
     gemspec.authors = ["Túlio Ornelas"]
