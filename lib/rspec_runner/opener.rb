@@ -11,7 +11,7 @@ module RSpecRunner
         when /linux/i
           linux(file_path)
         else
-          raise NotImplemented.new "An opener for #{RbConfig::CONFIG["host_os"]} is not implemented!"
+          raise NotImplemented.new "An opener for #{RbConfig::CONFIG["host_os"]} is not implemented yet!"
         end
       end
     
@@ -22,11 +22,11 @@ module RSpecRunner
       end
     
       def windows file_path
-        raise NotImplemented.new "An opener for windows(#{RbConfig::CONFIG["host_os"]}) is not implemented!"
+        raise NotImplemented.new "An opener for windows(#{RbConfig::CONFIG["host_os"]}) is not implemented yet!"
       end
     
       def linux file_path
-        raise NotImplemented.new "An opener for linux(#{RbConfig::CONFIG["host_os"]}) is not implemented!"
+        raise NotImplemented.new "An opener for linux(#{RbConfig::CONFIG["host_os"]}) is not implemented yet!"
       end
       
     end

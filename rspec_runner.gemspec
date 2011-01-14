@@ -9,18 +9,24 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["T\303\272lio Ornelas"]
-  s.date = %q{2011-01-03}
+  s.date = %q{2011-01-13}
   s.default_executable = %q{spec_runner}
-  s.description = %q{GUI Runner for RSpec tests}
+  s.description = %q{Add suite of tests feature on RSpec, show the results with html format (nice =])}
   s.email = %q{ornelas.tulio@gmail.com}
   s.executables = ["spec_runner"]
+  s.extra_rdoc_files = [
+    "README.rdoc"
+  ]
   s.files = [
     ".gitignore",
+     "README.rdoc",
      "Rakefile",
      "VERSION",
      "bin/spec_runner",
+     "lib/gem_chooser.rb",
      "lib/rspec_runner.rb",
      "lib/rspec_runner/app.rb",
+     "lib/rspec_runner/config.rb",
      "lib/rspec_runner/exceptions.rb",
      "lib/rspec_runner/opener.rb",
      "lib/rspec_runner/runner.rb",
@@ -36,7 +42,7 @@ Gem::Specification.new do |s|
   s.rdoc_options = ["--charset=UTF-8"]
   s.require_paths = ["lib"]
   s.rubygems_version = %q{1.4.1}
-  s.summary = %q{GUI Runner for RSpec tests}
+  s.summary = %q{Add suite of tests feature on RSpec}
   s.test_files = [
     "spec/rspec_runner_spec.rb"
   ]
@@ -45,12 +51,9 @@ Gem::Specification.new do |s|
     s.specification_version = 3
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
-      s.add_runtime_dependency(%q<activesupport>, ["= 2.3.8"])
     else
-      s.add_dependency(%q<activesupport>, ["= 2.3.8"])
     end
   else
-    s.add_dependency(%q<activesupport>, ["= 2.3.8"])
   end
 end
 
