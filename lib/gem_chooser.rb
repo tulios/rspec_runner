@@ -4,6 +4,7 @@ module GemChooser
     
     def load_gems
       rails? ? load_project_context : load_active_support
+      load_gem 'rainbow', 'rainbow'
     end
   
     def rails?
@@ -19,12 +20,24 @@ module GemChooser
     end
   
     def load_active_support
+      load_gem 'active_support', 'activesupport'
+      # begin
+      #   require 'active_support'
+      # rescue LoadError
+      #   require 'rubygems' unless ENV['NO_RUBYGEMS']
+      #   gem 'activesupport'
+      #   require 'active_support'
+      # end
+    end
+    
+    private
+    def load_gem name, gem_name
       begin
-        require 'active_support'
+        require name
       rescue LoadError
         require 'rubygems' unless ENV['NO_RUBYGEMS']
-        gem 'activesupport'
-        require 'active_support'
+        gem gem_name
+        require name
       end
     end
   
