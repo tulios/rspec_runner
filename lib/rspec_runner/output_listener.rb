@@ -29,7 +29,7 @@ module RSpecRunner
           content = file.read
           new_pos = file.pos
           
-          # Detect if the file changes
+          # Detects file changes
           if new_pos > pos
             # DD
             content.scan(/<dd\s+class="([^"]*)"\s*>(.*)<\/dd>/).each do |dd|

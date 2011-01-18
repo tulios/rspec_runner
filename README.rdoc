@@ -5,3 +5,16 @@
 Adds suite of tests feature on RSpec (awesome if you have 1k+ tests)
 
 * Better documentation soon!
+
+  $ spec_runner
+  $ spec_runner -g GROUP_NAME
+
+descriptor.yml
+
+  default: all
+
+  all:
+    - spec/controllers/**/*_spec.rb
+    - spec/models/**/*_spec.rb
+    - spec/integration/**/*_spec.rb
+
