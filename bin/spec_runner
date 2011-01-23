@@ -1,14 +1,6 @@
 #!/usr/bin/env ruby
 
 $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
-                                                                  
-# Show the version of the gem
-#
-if ARGV.member?('-v')
-  puts(File.open(File.expand_path(File.join(__FILE__, "..", "..", "VERSION"))).read)
-  exit(0)
-end
 
-# Starts everything
 require 'rspec_runner'
-RSpecRunner.init!(ARGV)
+RSpecRunner.init!(RSpecRunner::Config.new(ARGV))

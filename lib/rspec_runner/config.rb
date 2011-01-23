@@ -36,10 +36,14 @@ module RSpecRunner
           @options.execution_group_name = name
           @options.execute = @options.execution_group_name
         end
+        
+        opts.on("-v", "--version", "The gem version") do
+          puts(File.open(File.expand_path(File.join(__FILE__, "..", "..", "..", "VERSION"))).read)
+          exit(0)
+        end
       end
     
       opts.parse!(@args)
-      puts "Descriptor: #{@options.descriptor_path}"
     end
     
     def load_descriptor

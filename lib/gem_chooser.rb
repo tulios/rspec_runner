@@ -12,7 +12,7 @@ module GemChooser
     end
   
     def load_project_context
-      puts "Loading project context"
+      puts "Loading project context\n\n"
       if rails?
         ENV['RAILS_ENV'] = "test"
         require File.join(File.expand_path('.'), "config", "environment")

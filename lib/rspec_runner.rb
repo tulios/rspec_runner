@@ -13,7 +13,6 @@ require 'spec/autorun'
 require 'spec/runner/formatter/html_formatter'
 
 require File.join(File.dirname(__FILE__), 'gem_chooser')
-GemChooser.load_gems
 
 module RSpecRunner
   autoload :Config,               'rspec_runner/config'
@@ -26,11 +25,14 @@ module RSpecRunner
   extend RSpecRunner::Runner
   extend RSpecRunner::Opener
     
-  def self.init!(argv)
-    app = App.new Config.new(argv)
+  def self.init!(config)
+    puts "Descriptor: #{config.options.descriptor_path}"
+    GemChooser.load_gems
+    
+    app = App.new config
     app.start!
 
-    puts "Running group: #{app.config.options.execute.color(:cyan)}\n\n"
+    puts "Running group: #{config.options.execute.color(:cyan)}"
     puts "Files: #{app.files.inspect}"
     puts "Examples: #{app.examples.inspect}" unless app.examples.empty?
 
