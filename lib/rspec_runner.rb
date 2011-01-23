@@ -22,25 +22,26 @@ module RSpecRunner
   autoload :Opener,               'rspec_runner/opener'
   autoload :Exceptions,           'rspec_runner/exceptions'
   autoload :TextAndHtmlFormatter, 'rspec_runner/formatter/text_and_html_formatter'
+
   extend RSpecRunner::Runner
+  extend RSpecRunner::Opener
     
   def self.init!(argv)
-    app = App.new(Config.new(argv))
+    app = App.new Config.new(argv)
     app.start!
 
-    puts "Running: #{app.config.options.execute}\n"
-    puts ""
-
+    puts "Running group: #{app.config.options.execute.color(:cyan)}\n\n"
     puts "Files: #{app.files.inspect}"
     puts "Examples: #{app.examples.inspect}" unless app.examples.empty?
 
     delete_old_outputs
     output = get_output
 
-    puts "output: #{output.path}\n\n"
+    puts "output: #{output.path}" if app.open_in_browser?
+    puts "\n"
                
     run_file_list(app.files, app.examples, output)
-    Opener.open(output.path)
+    open(output.path) if app.open_in_browser?
   end
   
   def self.get_output
@@ -55,9 +56,7 @@ module RSpecRunner
   
   def self.delete_old_outputs
     entries = Dir.new(output_path).entries.select {|entry| entry =~ /^rspec_runner_/}
-    entries.each do |entry|
-      File.delete File.expand_path(File.join(output_path, entry))
-    end
+    entries.each {|entry| File.delete File.expand_path(File.join(output_path, entry))}
   end
   
 end

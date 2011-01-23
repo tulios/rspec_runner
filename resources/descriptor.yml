@@ -1,4 +1,5 @@
 default: todos
+open_in_browser: true
    
 todos:
   - resources/*_spec.rb

@@ -1,17 +1,5 @@
 module RSpecRunner
   module Runner
-                                            
-    # ex: run_file "resources/example1_spec.rb"
-    #
-    def run_file file_name, examples = [], output = get_output
-      run :files => [file_name], :examples => examples, :output => output
-    end
-
-    # ex: run_files ["resources/example1_spec.rb", "resources/example2_spec.rb"]
-    #
-    def run_files files, output = get_output, examples = []
-      run :files => files, :examples => examples, :output => output
-    end
 
     # ex: run_file_list "resources/*_spec.rb"
     #

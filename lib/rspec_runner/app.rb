@@ -5,6 +5,8 @@ module RSpecRunner
     
     def initialize config
       @config = config
+      @config.options.files = []
+      @config.options.examples = []
     end
     
     def start!
@@ -19,30 +21,35 @@ module RSpecRunner
       @config.options.examples
     end
     
+    def open_in_browser?
+      @config.descriptor["open_in_browser"]
+    end
+    
     private
     
     def extract_files_and_examples
       group_options = @config.options.descriptor[@config.options.execute]
       
-      @config.options.files = []
-      @config.options.examples = []
-      
       group_options.each do |group_option|
         if group_option.class == Hash
-          
           file_name = group_option.keys.first       
-          if group_option[file_name].class == Array
-            @config.options.examples += group_option[file_name] unless group_option[file_name].empty?
-          else            
-            @config.options.examples << group_option[file_name] unless group_option[file_name].nil?
-          end
-          
+          extract_examples(group_option, file_name)
           @config.options.files << file_name
+          
         else
           @config.options.files << group_option
         end
       end
       
+    end
+    
+    def extract_examples group_option, file_name
+      if group_option[file_name].class == Array  and not group_option[file_name].empty?
+        @config.options.examples += group_option[file_name]
+        
+      elsif group_option[file_name]
+        @config.options.examples << group_option[file_name]
+      end
     end
     
   end
