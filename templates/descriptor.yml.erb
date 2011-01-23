@@ -1,0 +1,7 @@
+default: all
+open_in_browser: true
+
+all:
+<% files_binding.each do |file_binding| %>
+<%= "#{' '*2}- #{file_binding}\n" %>
+<% end %>

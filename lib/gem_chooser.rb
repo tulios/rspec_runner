@@ -4,7 +4,6 @@ module GemChooser
     
     def load_gems
       rails? ? load_project_context : load_gem('active_support', 'activesupport')
-      load_gem 'rainbow', 'rainbow'
     end
   
     def rails?

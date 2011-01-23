@@ -29,6 +29,7 @@ Gem::Specification.new do |s|
      "lib/rspec_runner/config.rb",
      "lib/rspec_runner/exceptions.rb",
      "lib/rspec_runner/formatter/text_and_html_formatter.rb",
+     "lib/rspec_runner/generator/descriptor_generator.rb",
      "lib/rspec_runner/opener.rb",
      "lib/rspec_runner/runner.rb",
      "resources/descriptor.yml",
@@ -37,7 +38,8 @@ Gem::Specification.new do |s|
      "rspec_runner.gemspec",
      "script/console",
      "spec/rspec_runner_spec.rb",
-     "spec/spec_helper.rb"
+     "spec/spec_helper.rb",
+     "templates/descriptor.yml.erb"
   ]
   s.homepage = %q{http://github.com/tulios/rspec_runner}
   s.rdoc_options = ["--charset=UTF-8"]
@@ -52,12 +54,12 @@ Gem::Specification.new do |s|
     s.specification_version = 3
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
-      s.add_runtime_dependency(%q<rainbow>, [">= 0"])
+      s.add_runtime_dependency(%q<rainbow>, ["= 1.1"])
     else
-      s.add_dependency(%q<rainbow>, [">= 0"])
+      s.add_dependency(%q<rainbow>, ["= 1.1"])
     end
   else
-    s.add_dependency(%q<rainbow>, [">= 0"])
+    s.add_dependency(%q<rainbow>, ["= 1.1"])
   end
 end
 

@@ -9,7 +9,7 @@ begin
     gemspec.authors = ["Túlio Ornelas"]
     gemspec.test_files = Dir.glob('spec/*_spec.rb')
 
-    gemspec.add_runtime_dependency("rainbow")
+    gemspec.add_runtime_dependency("rainbow", "1.1")
     
     # gemspec.add_runtime_dependency("activesupport", "2.3.8")
     # gemspec.add_development_dependency "rspec", ">= 2.0.1"

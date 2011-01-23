@@ -11,6 +11,9 @@ require 'yaml'
 # Rspec 1.3
 require 'spec/autorun'
 require 'spec/runner/formatter/html_formatter'
+             
+require 'rainbow'
+require 'erb'
 
 require File.join(File.dirname(__FILE__), 'gem_chooser')
 
