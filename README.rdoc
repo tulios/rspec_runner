@@ -6,15 +6,33 @@ Adds suite of tests feature on RSpec (awesome if you have 1k+ tests)
 
 * Better documentation soon!
 
-  $ spec_runner
-  $ spec_runner -g GROUP_NAME
+=== Options
 
-descriptor.yml
+Runs the default group configured in descriptor.yml
+  spec_runner
+
+Describes the options
+  spec_runner --help
+
+Runs a single group described in descriptor.yml  
+  spec_runner -g GROUP_NAME
+
+Runs the tests using the defined descriptor  
+  spec_runner -f DESCRIPTOR_FILE_PATH
+
+Shows the gem version  
+  spec_runner -v
+
+Generates spec/descriptor.yml with the "all" group if you don't have one  
+  spec_runner --install
+  
+=== Example of descriptor.yml
 
   default: all
+  open_in_browser: true
 
   all:
-    - spec/controllers/**/*_spec.rb
-    - spec/models/**/*_spec.rb
-    - spec/integration/**/*_spec.rb
+    - spec/controllers/*_spec.rb
+    - spec/models/*_spec.rb
+    - spec/integration/*_spec.rb
 
