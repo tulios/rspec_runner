@@ -40,13 +40,6 @@ module RSpecRunner
           @options.execution_group_name = name
           @options.execute = @options.execution_group_name
         end
-
-        # TODO: Isso tem que ficar em outro lugar (quebrar o app?)
-        # Version
-        #
-        # opts.on("-v", "--version", "The version of gem") do
-        #   puts(File.open(File.expand_path(File.join(__FILE__, "..", "..", "..", "VERSION"))).read)
-        # end
       end
     
       opts.parse!(@args)

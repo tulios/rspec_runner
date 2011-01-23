@@ -7,20 +7,23 @@ require 'rake'
 require 'optparse'
 require 'ostruct'
 require 'yaml'
+
+# Rspec 1.3
 require 'spec/autorun'
+require 'spec/runner/formatter/html_formatter'
 
 require File.join(File.dirname(__FILE__), 'gem_chooser')
 GemChooser.load_gems
 
 module RSpecRunner
-  autoload :Config,         'rspec_runner/config'
-  autoload :App,            'rspec_runner/app'
-  autoload :Runner,         'rspec_runner/runner'
-  autoload :Opener,         'rspec_runner/opener'
-  autoload :Exceptions,     'rspec_runner/exceptions'
-  autoload :OutputListener, 'rspec_runner/output_listener'
+  autoload :Config,               'rspec_runner/config'
+  autoload :App,                  'rspec_runner/app'
+  autoload :Runner,               'rspec_runner/runner'
+  autoload :Opener,               'rspec_runner/opener'
+  autoload :Exceptions,           'rspec_runner/exceptions'
+  autoload :TextAndHtmlFormatter, 'rspec_runner/formatter/text_and_html_formatter'
   extend RSpecRunner::Runner
-  
+    
   def self.init!(argv)
     app = App.new(Config.new(argv))
     app.start!
@@ -36,14 +39,8 @@ module RSpecRunner
 
     puts "output: #{output.path}\n\n"
                
-    listener = OutputListener.new
-    runner = Thread.new do
-      run_file_list(app.files, app.examples, output)
-      listener.stop
-      Opener.open(output.path)
-    end
-    
-    [listener.start(output), runner].each &:join
+    run_file_list(app.files, app.examples, output)
+    Opener.open(output.path)
   end
   
   def self.get_output
@@ -64,5 +61,3 @@ module RSpecRunner
   end
   
 end
-
-# RSpecRunner.send :extend, RSpecRunner::Runner

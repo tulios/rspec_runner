@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{rspec_runner}
-  s.version = "0.0.1"
+  s.version = "0.0.2"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["T\303\272lio Ornelas"]
-  s.date = %q{2011-01-17}
+  s.date = %q{2011-01-23}
   s.default_executable = %q{spec_runner}
   s.description = %q{Add suite of tests feature on RSpec, show the results with html format (nice =])}
   s.email = %q{ornelas.tulio@gmail.com}
@@ -28,8 +28,8 @@ Gem::Specification.new do |s|
      "lib/rspec_runner/app.rb",
      "lib/rspec_runner/config.rb",
      "lib/rspec_runner/exceptions.rb",
+     "lib/rspec_runner/formatter/text_and_html_formatter.rb",
      "lib/rspec_runner/opener.rb",
-     "lib/rspec_runner/output_listener.rb",
      "lib/rspec_runner/runner.rb",
      "resources/descriptor.yml",
      "resources/example1_spec.rb",

@@ -29,7 +29,8 @@ module RSpecRunner
         examples_file.close
         argv << "--example=#{examples_file.path}"
       end
-      argv << "--format=html"
+      argv << "--require=rspec_runner/formatter/text_and_html_formatter.rb"
+      argv << "--format=RSpecRunner::Formatter::TextAndHtmlFormatter"
                                         
       Spec::Runner::CommandLine.run(::Spec::Runner::OptionParser.parse(argv, STDERR, stdout))
     end

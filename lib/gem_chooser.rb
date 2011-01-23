@@ -3,7 +3,7 @@ module GemChooser
   class << self
     
     def load_gems
-      rails? ? load_project_context : load_active_support
+      rails? ? load_project_context : load_gem('active_support', 'activesupport')
       load_gem 'rainbow', 'rainbow'
     end
   
@@ -19,17 +19,6 @@ module GemChooser
       end
     end
   
-    def load_active_support
-      load_gem 'active_support', 'activesupport'
-      # begin
-      #   require 'active_support'
-      # rescue LoadError
-      #   require 'rubygems' unless ENV['NO_RUBYGEMS']
-      #   gem 'activesupport'
-      #   require 'active_support'
-      # end
-    end
-    
     private
     def load_gem name, gem_name
       begin

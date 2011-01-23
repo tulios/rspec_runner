@@ -29,11 +29,12 @@ module RSpecRunner
       
       group_options.each do |group_option|
         if group_option.class == Hash
+          
           file_name = group_option.keys.first       
           if group_option[file_name].class == Array
-            @config.options.examples += group_option[file_name]
+            @config.options.examples += group_option[file_name] unless group_option[file_name].empty?
           else            
-            @config.options.examples << group_option[file_name]
+            @config.options.examples << group_option[file_name] unless group_option[file_name].nil?
           end
           
           @config.options.files << file_name
@@ -41,6 +42,7 @@ module RSpecRunner
           @config.options.files << group_option
         end
       end
+      
     end
     
   end
