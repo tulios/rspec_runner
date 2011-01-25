@@ -1,6 +1,6 @@
 module RSpecRunner
   module Runner
-
+    
     # ex: run_file_list "resources/*_spec.rb"
     #
     def run_file_list file_list, examples = [], output = get_output
@@ -18,10 +18,14 @@ module RSpecRunner
         argv << "--example=#{examples_file.path}"
       end
       argv << "--require=rspec_runner/formatter/text_and_html_formatter.rb"
-      argv << "--format=RSpecRunner::Formatter::TextAndHtmlFormatter"
+      argv << "--format=#{format}"
                                         
       Spec::Runner::CommandLine.run(::Spec::Runner::OptionParser.parse(argv, STDERR, stdout))
     end
+                
+    # This method helps testability
+    def format; @format || RSpecRunner::Formatter::TextAndHtmlFormatter.to_s end
+    def format=(format); @format = format end
     
   end
 end

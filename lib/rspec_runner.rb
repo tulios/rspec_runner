@@ -18,11 +18,18 @@ require 'erb'
 require File.join(File.dirname(__FILE__), 'gem_chooser')
 
 module RSpecRunner
-  autoload :Config,               'rspec_runner/config'
-  autoload :App,                  'rspec_runner/app'
-  autoload :Runner,               'rspec_runner/runner'
-  autoload :Exceptions,           'rspec_runner/exceptions'
-  autoload :TextAndHtmlFormatter, 'rspec_runner/formatter/text_and_html_formatter'
+  autoload :Config,     'rspec_runner/config'
+  autoload :App,        'rspec_runner/app'
+  autoload :Runner,     'rspec_runner/runner'
+  autoload :Exceptions, 'rspec_runner/exceptions'
+  
+  module Formatter
+    autoload :TextAndHtmlFormatter, 'rspec_runner/formatter/text_and_html_formatter'
+  end
+  
+  module Generator
+    autoload :DescriptorGenerator,  'rspec_runner/generator/descriptor_generator'
+  end
 
   extend RSpecRunner::Runner
     

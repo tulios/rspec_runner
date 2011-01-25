@@ -1,0 +1,16 @@
+default: all
+open_in_browser: false
+   
+all:
+  - spec/resources/*_spec.rb
+  
+group1:
+  - spec/resources/example1_spec.rb
+
+group2:
+  - spec/resources/example1_spec.rb
+  - spec/resources/example2_spec.rb
+
+just_one:
+  - spec/resources/example1_spec.rb:
+    - should be false

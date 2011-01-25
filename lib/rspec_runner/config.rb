@@ -49,7 +49,6 @@ module RSpecRunner
         end
         
         opts.on("-i", "--install", "Create the descriptor.yml file if you don't have one") do
-          require 'rspec_runner/generator/descriptor_generator'
           genetaror = RSpecRunner::Generator::DescriptorGenerator.new(@options.templates_path, @options.project_path)
           genetaror.generate!
           exit(0)
