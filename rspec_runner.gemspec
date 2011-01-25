@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["T\303\272lio Ornelas"]
-  s.date = %q{2011-01-23}
+  s.date = %q{2011-01-24}
   s.default_executable = %q{spec_runner}
   s.description = %q{Add suite of tests feature on RSpec, show the results with html format (nice =])}
   s.email = %q{ornelas.tulio@gmail.com}
@@ -30,7 +30,6 @@ Gem::Specification.new do |s|
      "lib/rspec_runner/exceptions.rb",
      "lib/rspec_runner/formatter/text_and_html_formatter.rb",
      "lib/rspec_runner/generator/descriptor_generator.rb",
-     "lib/rspec_runner/opener.rb",
      "lib/rspec_runner/runner.rb",
      "resources/descriptor.yml",
      "resources/example1_spec.rb",
@@ -55,11 +54,14 @@ Gem::Specification.new do |s|
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
       s.add_runtime_dependency(%q<rainbow>, ["= 1.1"])
+      s.add_runtime_dependency(%q<launchy>, ["= 0.3.7"])
     else
       s.add_dependency(%q<rainbow>, ["= 1.1"])
+      s.add_dependency(%q<launchy>, ["= 0.3.7"])
     end
   else
     s.add_dependency(%q<rainbow>, ["= 1.1"])
+    s.add_dependency(%q<launchy>, ["= 0.3.7"])
   end
 end
 
