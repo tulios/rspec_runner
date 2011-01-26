@@ -67,7 +67,7 @@ module RSpecRunner
       end
       
       def ident
-        ' '*3
+        ' '*2
       end
       
     end

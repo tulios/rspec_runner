@@ -21,7 +21,6 @@ module RSpecRunner
   autoload :Config,     'rspec_runner/config'
   autoload :App,        'rspec_runner/app'
   autoload :Runner,     'rspec_runner/runner'
-  autoload :Exceptions, 'rspec_runner/exceptions'
   
   module Formatter
     autoload :TextAndHtmlFormatter, 'rspec_runner/formatter/text_and_html_formatter'
@@ -40,7 +39,7 @@ module RSpecRunner
     app = App.new config
     app.start!
 
-    puts "Running group: #{config.options.execute.color(:cyan)}"
+    puts "Running group: #{app.execute.color(:cyan)}"
     puts "Files: #{app.files.inspect}"
     puts "Examples: #{app.examples.inspect}" unless app.examples.empty?
 

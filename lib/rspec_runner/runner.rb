@@ -23,7 +23,7 @@ module RSpecRunner
       Spec::Runner::CommandLine.run(::Spec::Runner::OptionParser.parse(argv, STDERR, stdout))
     end
                 
-    # This method helps testability
+    # This methods helps testability
     def format; @format || RSpecRunner::Formatter::TextAndHtmlFormatter.to_s end
     def format=(format); @format = format end
     

@@ -33,6 +33,9 @@ Gem::Specification.new do |s|
      "lib/rspec_runner/runner.rb",
      "rspec_runner.gemspec",
      "script/console",
+     "spec/resources/descriptor.yml",
+     "spec/resources/example1_spec.rb",
+     "spec/resources/example2_spec.rb",
      "spec/rspec_runner_spec.rb",
      "spec/spec_helper.rb",
      "templates/descriptor.yml.erb"
